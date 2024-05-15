@@ -7,6 +7,9 @@
                 <div class="card border-0 shadow">
                     <div class="card-body">
                     <h1 class="text-center mb-5">Login</h1>
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+                    @endif
                     <form action="{{route('login.post')}}" method="POST">
                         @csrf
                         <div class="mb-4">

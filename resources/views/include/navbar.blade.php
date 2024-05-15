@@ -1,7 +1,7 @@
 <nav class="navbar" style="background-color: #3cb4fc;">
   <div class="container-fluid">
-    <a style="color: #ffffff"class="navbar-brand" href="#">
-      <img src="...\Logo_White.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
+    <a class="navbar-brand d-flex align-items-center text-white fw-bold fs-3 ps-5" href="#">
+      <img src="{{ asset('images/Logo_White.png') }}" alt="Logo" width="65" height="65" class="d-inline-block align-text-top me-3">
       SCMS
     </a>
   </div>
