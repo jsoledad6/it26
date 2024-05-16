@@ -23,12 +23,20 @@ class AuthManager extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-
+    
         $credentials = $request->only('email', 'password');
         if(Auth::attempt($credentials)){
-            return redirect()->intended(route('home'));
+            // Check the authenticated user's role
+            $user = Auth::user();
+            if ($user->role === 'doctor') {
+                // Redirect doctors to a specific route
+                return redirect()->route('home')->with('success', 'Login successful.');
+            } else {
+                // Redirect others to the home page
+                return redirect()->route('welcome')->with('success', 'Login successful.');
+            }
         }
-        return redirect(route('login'))->with("error", "patakag login");
+        return redirect(route('login'))->with("error", "Invalid login credentials.");
     }
 
     function registerPost(Request $request){
@@ -47,14 +55,14 @@ class AuthManager extends Controller
 
         $user = User::create($data);
         if(!$user){
-            return redirect(route('register'))->with("error", "Registration failed. Please try again.");
+            return redirect(route('register'))->with('error', 'Registration failed. Please try again.');
         }
-        return redirect(route('login'));
+        return redirect(route('login'))->with('success', 'Registration successful. You can now login.');
     }
 
     function logout(){
         Session::flush();
         Auth::logout();
-        return redirect(route('login'));
+        return redirect(route('login'))->with('success', 'Logged out successfully.');
     }
 }
