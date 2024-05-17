@@ -1,48 +1,76 @@
 @extends('layout')
-@section('title', 'Home')
+@section('title', 'Create Student')
 @include('include.doctor.docnav')
 
 @section('content')
-<div class="container mt-5 pt-5">
-        <div class="row">
-            <div class="col-12 col-sm-8 col-md-4 m-auto">
-                <div class="card border-0 shadow">
-                    <div class="card-body">
-                    <h1 class="text-center mb-5">Add Student</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Create New Student</div>
+
+                <div class="card-body">
                     <form action="{{ route('students.store') }}" method="POST">
                         @csrf
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="ID Number" name="studID">
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="studID" name="studID" required placeholder="Student ID">
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="First Name" name="studFirstName">
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="studFirstName" name="studFirstName" required placeholder="First Name">
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="MiddleName" name="studMiddleName">
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="studMiddleName" name="studMiddleName" required placeholder="Middle Name">
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="Last Name" name="studLastName">
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="studLastName" name="studLastName" required placeholder="Last Name">
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="Age" name="studAge">
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <input type="text" class="form-control" id="studYear" name="studYear" required placeholder="Year Level">
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <input type="text" class="form-control" id="studCollege" name="studCollege" required placeholder="College">
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <input type="text" class="form-control" id="studProgram" name="studProgram" required placeholder="Program">
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="Gender" name="studGender">
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <input type="text" class="form-control" id="studAge" name="studAge" required placeholder="Age">
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <select class="form-select" id="studGender" name="studGender" required>
+                                    <option value="" selected disabled>Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option balue="LGBTQ+">LGBTQ+</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <input type="email" class="form-control" id="studEmail" name="studEmail" required placeholder="Email">
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <input type="email" class="form-control my-3 py-2" placeholder="Email" name="studEmail">
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="studContact" name="studContact" required placeholder="Contact Number">
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="Contact Number" name="studContact">
-                        </div>
-                        <div class="mb-4">
-                        <button type="submit" class="btn btn-color">Save</button>
-                        </div>
+
+                        <button type="submit" class="btn btn-color">Submit</button>
                     </form>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-@stop
+</div>
+@endsection

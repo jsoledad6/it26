@@ -1,53 +1,89 @@
 @extends('layout')
-@section('title', 'Home')
+
+@section('title', 'Edit Student')
+
 @include('include.doctor.docnav')
 
 @section('content')
-<div class="card" style="margin: 20px;">
-    <div class="card-header">Create New Student</div>
-</div>
-<div class="container mt-5 pt-5">
-        <div class="row">
-            <div class="col-12 col-sm-8 col-md-4 m-auto">
-                <div class="card border-0 shadow">
-                    <div class="card-body">
-                    <h1 class="text-center mb-5">Edit Student</h1>
-                    <form action="{{ url('/students') }}" method="post">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Edit Student</div>
+
+                <div class="card-body">
+                    <form action="{{ route('students.update', $students->id) }}" method="POST">
                         @csrf
                         @method("PATCH")
-                        <input type="hidden" name="id" id="id" value="{{$students->id}}" id="id" />
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="ID Number" name="studID" value="{{$students->studID}}">
+
+                        <div class="mb-3">
+                            <label for="studID" class="form-label">ID Number</label>
+                            <input id="studID" type="text" class="form-control" name="studID" value="{{ $students->studID }}" required autofocus>
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="First Name" name="studFirstName" value="{{$students->studFirstName}}">
+
+                        <div class="mb-3">
+                            <label for="studFirstName" class="form-label">First Name</label>
+                            <input id="studFirstName" type="text" class="form-control" name="studFirstName" value="{{ $students->studFirstName }}" required>
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="MiddleName" name="studMiddleName" value="{{$students->studMiddleName}}">
+
+                        <div class="mb-3">
+                            <label for="studMiddleName" class="form-label">Middle Name</label>
+                            <input id="studMiddleName" type="text" class="form-control" name="studMiddleName" value="{{ $students->studMiddleName }}">
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="Last Name" name="studLastName" value="{{$students->studLastName}}">
+
+                        <div class="mb-3">
+                            <label for="studLastName" class="form-label">Last Name</label>
+                            <input id="studLastName" type="text" class="form-control" name="studLastName" value="{{ $students->studLastName }}" required>
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="Age" name="studAge" value="{{$students->studAge}}">
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="studYear" class="form-label">Year Level</label>
+                                <input id="studYear" type="text" class="form-control" name="studYear" value="{{ $students->studYear }}" required>
+                            </div>
+                            <div class="col">
+                                <label for="studCollege" class="form-label">College</label>
+                                <input id="studCollege" type="text" class="form-control" name="studCollege" value="{{ $students->studCollege }}" required>
+                            </div>
+                            <div class="col">
+                                <label for="studProgram" class="form-label">Program</label>
+                                <input id="studProgram" type="text" class="form-control" name="studProgram" value="{{ $students->studProgram }}" required>
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="Gender" name="studGender" value="{{$students->studGender}}">
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="studAge" class="form-label">Age</label>
+                                <input id="studAge" type="text" class="form-control" name="studAge" value="{{ $students->studAge }}" required>
+                            </div>
+                            <div class="col">
+                                <label for="studGender" class="form-label">Gender</label>
+                                <select class="form-select" id="studGender" name="studGender" required>
+                                    <option value="" disabled>Choose gender...</option>
+                                    <option value="Male" {{ $students->studGender === 'Male' ? 'selected' : '' }}>Male</option>
+                                    <option value="Female" {{ $students->studGender === 'Female' ? 'selected' : '' }}>Female</option>
+                                    <option value="LGBTQ+" {{ $students->studGender === 'LGBTQ+' ? 'selected' : '' }}>LGBTQ+</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="studEmail" class="form-label">Email</label>
+                                <input id="studEmail" type="email" class="form-control" name="studEmail" value="{{ $students->studEmail }}" required>
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <input type="email" class="form-control my-3 py-2" placeholder="Email" name="studEmail" value="{{$students->studEmail}}">
+
+                        <div class="mb-3">
+                            <label for="studContact" class="form-label">Contact Number</label>
+                            <input id="studContact" type="text" class="form-control" name="studContact" value="{{ $students->studContact }}" required>
                         </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control my-3 py-2" placeholder="Contact Number" name="studContact" value="{{$students->studContact}}">
-                        </div>
-                        <div class="mb-4">
+
+                        <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>
+                            <a href="{{ url('/students') }}" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-@stop
+</div>
+@endsection

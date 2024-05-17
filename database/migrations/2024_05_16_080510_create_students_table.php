@@ -15,12 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('studID', 11);
             $table->string('studFirstName', 25);
-            $table->string('studLastName', 25);
             $table->string('studMiddleName', 25);
+            $table->string('studLastName', 25);
+            $table->string('studYear', 10);
+            $table->string('studCollege', 50);
+            $table->string('studProgram', 50);
             $table->string('studAge', 2);
             $table->string('studGender', 6);
             $table->string('studEmail', 50);
-            $table->string('studContact');
+            $table->string('studContact', 20);
             $table->timestamps();
         });
     }

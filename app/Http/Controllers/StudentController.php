@@ -49,4 +49,10 @@ class StudentController extends Controller
         $student = Student::find($id);
         return view('students.show')->with('students', $student); // Use 'student' instead of 'students'
     }
+
+    public function diagnosis($id)
+    {
+    // Logic to perform diagnosis for the student with ID $id
+    // Example: Retrieve student data, perform actions, and return a view
+    }
 }

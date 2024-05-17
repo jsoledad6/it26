@@ -3,6 +3,9 @@
 use App\Http\Controllers\AuthManager;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DiagnosisController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +35,11 @@ Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::resource("/students", StudentController::class);
     Route::post('/students', [StudentController::class, 'store'])->name('students.store');
+
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('students/{student_id}/diagnoses/create', [DiagnosisController::class, 'create'])->name('diagnoses.create');
+    Route::resource('diagnoses', DiagnosisController::class)->except(['create']);
 });
