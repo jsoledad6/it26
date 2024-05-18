@@ -33,7 +33,7 @@ class AuthManager extends Controller
                 return redirect()->route('home')->with('success', 'Login successful.');
             } else {
                 // Redirect others to the home page
-                return redirect()->route('welcome')->with('success', 'Login successful.');
+                return redirect()->route('admin')->with('success', 'Login successful.');
             }
         }
         return redirect(route('login'))->with("error", "Invalid login credentials.");

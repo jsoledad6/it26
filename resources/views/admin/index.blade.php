@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title', 'Home')
-@include('include.doctor.docnav')
+@include('include.doctor.adminnav')
 
 @section('content')
 <div class="container-fluid">
@@ -12,9 +12,13 @@
                     <i class="fas fa-home me-2"></i>
                     Home
                 </a>
-                <a href="{{ url('/students') }}" class="btn d-flex align-items-center mb-2" style="background-color:  #3cb4fc; border-color: transparent; color: #ffffff; text-align: left;">
+                <a href="{{ url('/admin/students') }}" class="btn d-flex align-items-center mb-2" style="background-color:  #3cb4fc; border-color: transparent; color: #ffffff; text-align: left;">
                     <i class="fas fa-user me-2"></i>
                     Students
+                </a>
+                <a href="{{ url('/admin/doctors') }}" class="btn d-flex align-items-center mb-2" style="background-color: transparent; border-color: transparent; color: #000000; text-align: left;">
+                    <i class="fas fa-user-md me-2"></i>
+                    Doctors
                 </a>
             </div>
         </div>
@@ -25,10 +29,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h2>Student Table</h2>         
+                            <h2>Student Table</h2>
                         </div>
                         <div class="card-body">
-                            <a href="{{ url('/students/create') }}" class="btn btn-color btn-sm" title="Add New Student">
+                            <a href="{{ url('/admin/students/create') }}" class="btn btn-color btn-sm" title="Add New Student">
                                 Add New
                             </a>
                             <br><br>

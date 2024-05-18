@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title', 'Create Student')
-@include('include.doctor.docnav')
+@include('include.doctor.adminnav')
 
 @section('content')
 <div class="container">
@@ -9,9 +9,10 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Add Student</span>
+                    <a href="{{ url('/admin/students') }}" class="btn btn-sm btn-outline-secondary">&larr; Back</a>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('students.store') }}" method="POST">
+                    <form action="{{ route('/students.store') }}" method="POST">
                         @csrf
 
                         <!-- Student fields -->

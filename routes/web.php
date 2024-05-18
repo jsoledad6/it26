@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DiagnosisController;
+use App\Http\Controllers\Admin\DoctorController;
 
 
 /*
@@ -25,6 +26,10 @@ Route::get('/home', function(){
     return view('home');
 })->name('home');
 
+Route::get('/admin', function(){
+    return view('admin');
+})->name('admin');
+
 Route::get('/login', [AuthManager::class, 'login'])->name('login');
 Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
 Route::get('/register', [AuthManager::class, 'register'])->name('register');
@@ -42,4 +47,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('students/{student_id}/diagnoses/create', [DiagnosisController::class, 'create'])->name('diagnoses.create');
     Route::resource('diagnoses', DiagnosisController::class)->except(['create']);
+
+    Route::resource("/admin/students", StudentController::class);
+    Route::post('/admin/students', [StudentController::class, 'store'])->name('students.store');
+    Route::get('/admin/students/{student_id}/diagnoses/create', [DiagnosisController::class, 'create'])->name('diagnoses.create');
 });

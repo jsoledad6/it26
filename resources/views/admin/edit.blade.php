@@ -12,7 +12,6 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Edit Student</span>
                 </div>
-                
                 <div class="card-body">
                     <form action="{{ route('students.update', $students->id) }}" method="POST">
                         @csrf
