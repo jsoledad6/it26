@@ -7,12 +7,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create New Student</div>
+                <div class="card-header">Create New Student and Diagnosis</div>
 
                 <div class="card-body">
                     <form action="{{ route('students.store') }}" method="POST">
                         @csrf
 
+                        <!-- Student fields -->
                         <div class="mb-3">
                             <input type="text" class="form-control" id="studID" name="studID" required placeholder="Student ID">
                         </div>
@@ -22,7 +23,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="studMiddleName" name="studMiddleName" required placeholder="Middle Name">
+                            <input type="text" class="form-control" id="studMiddleName" name="studMiddleName" placeholder="Middle Name">
                         </div>
 
                         <div class="mb-3">
@@ -53,7 +54,7 @@
                                     <option value="" selected disabled>Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
-                                    <option balue="LGBTQ+">LGBTQ+</option>
+                                    <option value="LGBTQ+">LGBTQ+</option>
                                 </select>
                             </div>
 
@@ -66,7 +67,21 @@
                             <input type="text" class="form-control" id="studContact" name="studContact" required placeholder="Contact Number">
                         </div>
 
-                        <button type="submit" class="btn btn-color">Submit</button>
+                        <hr>
+
+                        <h5>Diagnosis Information</h5>
+
+                        <div class="mb-3">
+                            <label for="condition" class="form-label">Condition</label>
+                            <input type="text" class="form-control" id="condition" name="condition" required placeholder="Condition">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" placeholder="Description"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

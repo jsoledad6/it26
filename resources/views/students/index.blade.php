@@ -28,7 +28,7 @@
                             <h2>Student Table</h2>
                         </div>
                         <div class="card-body">
-                            <a href="{{ url('/students/create') }}" class="btn btn-success btn-sm" title="Add New Student">
+                            <a href="{{ url('/students/create') }}" class="btn btn-color btn-sm" title="Add New Student">
                                 Add New
                             </a>
                             <br><br>

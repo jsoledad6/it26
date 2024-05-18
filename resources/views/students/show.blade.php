@@ -29,7 +29,6 @@
                         <p class="card-text"><strong>Condition:</strong> {{ $diagnosis->condition }}</p>
                         <p class="card-text"><strong>Description:</strong> {{ $diagnosis->description }}</p>
                     @endforeach
-                    <a href="{{ route('diagnoses.create', $students->id) }}" class="btn btn-primary">Edit Diagnosis</a>
                 </div>
             </div>
         </div>
