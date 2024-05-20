@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title', 'Student Details')
-@include('include.doctor.docnav')
+@include('include.doctor.adminnav')
 
 @section('content')
 <div class="container mt-5">

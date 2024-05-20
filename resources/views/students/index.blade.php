@@ -8,7 +8,7 @@
         <!-- Vertical buttons sidebar -->
         <div class="d-flex flex-column p-3" style="width: 250px; height: 100vh; background-color: #ffffff; margin-top: 40px;">
             <div class="mb-auto">
-                <a href="{{ url('/admin') }}" class="btn d-flex align-items-center mb-2" style="background-color: transparent; border-color: #transparent; color: #000000; text-align: left;">
+                <a href="{{ url('/home') }}" class="btn d-flex align-items-center mb-2" style="background-color: transparent; border-color: transparent; color: #000000; text-align: left;">
                     <i class="fas fa-home me-2"></i>
                     Home
                 </a>
@@ -24,8 +24,13 @@
             <div class="row" style="margin: 20px;">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h2>Student Table</h2>         
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h2>Student Table</h2>
+                            <!-- Search Form -->
+                            <form action="{{ url('/students') }}" method="GET" class="d-flex">
+                                <input type="text" name="search" class="form-control" placeholder="Search students" value="{{ request()->input('search') }}">
+                                <button type="submit" class="btn btn-color btn-sm ms-2">Search</button>
+                            </form>
                         </div>
                         <div class="card-body">
                             <a href="{{ url('/students/create') }}" class="btn btn-color btn-sm" title="Add New Student">

@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', 'Admin Home')
 @include('include.doctor.adminnav')
+
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -10,7 +11,7 @@
                     <i class="fas fa-home me-2"></i>
                     Home
                 </a>
-                <a href="{{ url('/admin/students') }}" class="btn d-flex align-items-center mb-2" style="background-color: transparent; border-color: transparent; color: #000000; text-align: left;">
+                <a href="{{ route('admin.students.index') }}" class="btn d-flex align-items-center mb-2" style="background-color: transparent; border-color: transparent; color: #000000; text-align: left;">
                     <i class="fas fa-user me-2"></i>
                     Students
                 </a>

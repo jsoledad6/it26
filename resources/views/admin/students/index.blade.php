@@ -12,7 +12,7 @@
                     <i class="fas fa-home me-2"></i>
                     Home
                 </a>
-                <a href="{{ url('/admin/students') }}" class="btn d-flex align-items-center mb-2" style="background-color:  #3cb4fc; border-color: transparent; color: #ffffff; text-align: left;">
+                <a href="{{ route('admin.students.index') }}" class="btn d-flex align-items-center mb-2" style="background-color:  #3cb4fc; border-color: transparent; color: #ffffff; text-align: left;">
                     <i class="fas fa-user me-2"></i>
                     Students
                 </a>
@@ -32,7 +32,7 @@
                             <h2>Student Table</h2>
                         </div>
                         <div class="card-body">
-                            <a href="{{ url('/admin/students/create') }}" class="btn btn-color btn-sm" title="Add New Student">
+                            <a href="{{ route('admin.students.create') }}" class="btn btn-color btn-sm" title="Add New Student">
                                 Add New
                             </a>
                             <br><br>
@@ -63,13 +63,13 @@
                                             <td>{{ $student->studCollege }}</td>
                                             <td>{{ $student->studProgram }}</td>
                                             <td>
-                                                <a href="{{ route('students.show', $student->id) }}" title="View Student">
+                                                <a href="{{ route('admin.students.show', $student->id) }}" title="View Student">
                                                     <button class="btn btn-color btn-sm"><i class="fas fa-eye"></i></button>
                                                 </a>
                                                 <a href="{{ route('diagnoses.create', $student->id) }}" title="Add Diagnosis">
                                                     <button class="btn btn-color btn-sm"><i class="fas fa-file-medical"></i></button>
                                                 </a>
-                                                <a href="{{ route('students.edit', $student->id) }}" title="Edit Student">
+                                                <a href="{{ route('admin.students.edit', $student->id) }}" title="Edit Student">
                                                     <button class="btn btn-color btn-sm"><i class="fas fa-pencil-alt"></i></button>
                                                 </a>
                                             </td>
@@ -77,12 +77,12 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> <!-- End table responsive -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <!-- End col -->
     </div>
 </div>
 @endsection

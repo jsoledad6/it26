@@ -2,7 +2,7 @@
 
 @section('title', 'Edit Student')
 
-@include('include.doctor.docnav')
+@include('include.doctor.adminnav')
 
 @section('content')
 <div class="container">
@@ -13,7 +13,7 @@
                     <span>Edit Student</span>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('students.update', $students->id) }}" method="POST">
+                    <form action="{{ route('admin.students.update', $students->id) }}" method="POST">
                         @csrf
                         @method("PATCH")
 

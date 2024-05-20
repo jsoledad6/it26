@@ -6,7 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\Admin\DoctorController;
-
+use App\Http\Controllers\Admin\AdminStudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\DoctorController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function(){
     return view('welcome');
 })->name('welcome');
@@ -36,7 +37,6 @@ Route::get('/register', [AuthManager::class, 'register'])->name('register');
 Route::post('/register', [AuthManager::class, 'registerPost'])->name('register.post');
 Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 
-
 Route::middleware(['auth'])->group(function () {
     Route::resource("/students", StudentController::class);
     Route::post('/students', [StudentController::class, 'store'])->name('students.store');
@@ -48,7 +48,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('students/{student_id}/diagnoses/create', [DiagnosisController::class, 'create'])->name('diagnoses.create');
     Route::resource('diagnoses', DiagnosisController::class)->except(['create']);
 
-    Route::resource("/admin/students", StudentController::class);
-    Route::post('/admin/students', [StudentController::class, 'store'])->name('students.store');
-    Route::get('/admin/students/{student_id}/diagnoses/create', [DiagnosisController::class, 'create'])->name('diagnoses.create');
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('students', AdminStudentController::class);
+        Route::post('/students', [AdminStudentController::class, 'store'])->name('students.store');
+        Route::get('/students/{student_id}/diagnoses/create', [DiagnosisController::class, 'create'])->name('diagnoses.create');
+    });
 });

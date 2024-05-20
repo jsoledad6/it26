@@ -12,7 +12,7 @@
                     <a href="{{ url('/admin/students') }}" class="btn btn-sm btn-outline-secondary">&larr; Back</a>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('/students.store') }}" method="POST">
+                    <form action="{{ route('admin.students.store') }}" method="POST">
                         @csrf
 
                         <!-- Student fields -->
