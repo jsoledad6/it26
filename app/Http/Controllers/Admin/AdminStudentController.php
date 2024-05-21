@@ -9,9 +9,22 @@ use App\Models\Diagnosis;
 
 class AdminStudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::all();
+        $search = $request->input('search');
+
+        if ($search) {
+            $students = Student::where('studID', 'LIKE', "%{$search}%")
+                ->orWhere('studFirstName', 'LIKE', "%{$search}%")
+                ->orWhere('studMiddleName', 'LIKE', "%{$search}%")
+                ->orWhere('studLastName', 'LIKE', "%{$search}%")
+                ->orWhere('studCollege', 'LIKE', "%{$search}%")
+                ->orWhere('studProgram', 'LIKE', "%{$search}%")
+                ->get();
+        } else {
+            $students = Student::all();
+        }
+
         return view('admin.students.index')->with('students', $students);
     }
 

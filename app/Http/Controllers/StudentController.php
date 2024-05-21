@@ -13,9 +13,22 @@ class StudentController extends Controller
         return view('home');
     } 
 
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::all();
+        $search = $request->input('search');
+
+        if ($search) {
+            $students = Student::where('studID', 'LIKE', "%{$search}%")
+                ->orWhere('studFirstName', 'LIKE', "%{$search}%")
+                ->orWhere('studMiddleName', 'LIKE', "%{$search}%")
+                ->orWhere('studLastName', 'LIKE', "%{$search}%")
+                ->orWhere('studCollege', 'LIKE', "%{$search}%")
+                ->orWhere('studProgram', 'LIKE', "%{$search}%")
+                ->get();
+        } else {
+            $students = Student::all();
+        }
+
         return view('students.index')->with('students', $students);
     }
 

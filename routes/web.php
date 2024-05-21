@@ -37,6 +37,13 @@ Route::get('/register', [AuthManager::class, 'register'])->name('register');
 Route::post('/register', [AuthManager::class, 'registerPost'])->name('register.post');
 Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('students', AdminStudentController::class);
+    Route::post('/admin/students', [AdminStudentController::class, 'store'])->name('students.store');
+    Route::get('/admin/students/{student_id}/diagnoses/create', [DiagnosisController::class, 'create'])->name('diagnoses.create');
+
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::resource("/students", StudentController::class);
     Route::post('/students', [StudentController::class, 'store'])->name('students.store');
@@ -47,10 +54,4 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('students/{student_id}/diagnoses/create', [DiagnosisController::class, 'create'])->name('diagnoses.create');
     Route::resource('diagnoses', DiagnosisController::class)->except(['create']);
-
-    Route::prefix('admin')->name('admin.')->group(function () {
-        Route::resource('students', AdminStudentController::class);
-        Route::post('/students', [AdminStudentController::class, 'store'])->name('students.store');
-        Route::get('/students/{student_id}/diagnoses/create', [DiagnosisController::class, 'create'])->name('diagnoses.create');
-    });
 });

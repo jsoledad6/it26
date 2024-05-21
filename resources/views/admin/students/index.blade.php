@@ -8,11 +8,11 @@
         <!-- Vertical buttons sidebar -->
         <div class="d-flex flex-column p-3" style="width: 250px; height: 100vh; background-color: #ffffff; margin-top: 40px;">
             <div class="mb-auto">
-                <a href="{{ url('/admin') }}" class="btn d-flex align-items-center mb-2" style="background-color: transparent; border-color: #transparent; color: #000000; text-align: left;">
+                <a href="{{ route('admin') }}" class="btn d-flex align-items-center mb-2" style="background-color: transparent; border-color: transparent; color: #000000; text-align: left;">
                     <i class="fas fa-home me-2"></i>
                     Home
                 </a>
-                <a href="{{ route('admin.students.index') }}" class="btn d-flex align-items-center mb-2" style="background-color:  #3cb4fc; border-color: transparent; color: #ffffff; text-align: left;">
+                <a href="{{ route('admin.students.index') }}" class="btn d-flex align-items-center mb-2" style="background-color: #3cb4fc; border-color: #3cb4fc; color: #ffffff; text-align: left;">
                     <i class="fas fa-user me-2"></i>
                     Students
                 </a>
@@ -28,8 +28,12 @@
             <div class="row" style="margin: 20px;">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-flex justify-content-between align-items-center">
                             <h2>Student Table</h2>
+                            <form action="{{ url('/admin/students') }}" method="GET" class="d-flex" style="width: auto;">
+                                <input type="text" name="search" class="form-control" placeholder="Search students" value="{{ request()->input('search') }}" style="width: 200px;">
+                                <button type="submit" class="btn btn-color btn-sm ms-2">Search</button>
+                            </form>
                         </div>
                         <div class="card-body">
                             <a href="{{ route('admin.students.create') }}" class="btn btn-color btn-sm" title="Add New Student">

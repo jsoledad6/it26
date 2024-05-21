@@ -26,7 +26,6 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h2>Student Table</h2>
-                            <!-- Search Form -->
                             <form action="{{ url('/students') }}" method="GET" class="d-flex">
                                 <input type="text" name="search" class="form-control" placeholder="Search students" value="{{ request()->input('search') }}">
                                 <button type="submit" class="btn btn-color btn-sm ms-2">Search</button>

@@ -7,7 +7,7 @@
     <div class="row">
         <div class="d-flex flex-column p-3" style="width: 250px; height: 100vh; background-color: #ffffff; margin-top: 40px;">
             <div class="mb-auto">
-                <a href="{{ url('/admin') }}" class="btn d-flex align-items-center mb-2" style="background-color: #3cb4fc; border-color: #3cb4fc; color: #ffffff; text-align: left;">
+                <a href="{{ route('admin') }}" class="btn d-flex align-items-center mb-2" style="background-color: #3cb4fc; border-color: #3cb4fc; color: #ffffff; text-align: left;">
                     <i class="fas fa-home me-2"></i>
                     Home
                 </a>
@@ -23,7 +23,6 @@
         </div>
         <div class="col-9">
             <h1 class="text-center">Welcome to the Admin Dashboard</h1>
-            <!-- Add other content for the home page here -->
         </div>
     </div>
 </div>
